@@ -28,7 +28,7 @@ struct RecipeDetailView: View {
                     .bold()
                     .padding(.top, 20)
                     .padding(.leading)
-                    .font(.largeTitle)
+                    .font(Font.custom("Avenir Heavy", size: 24))
                 
                 //MARK: Serving size picker
                 
@@ -41,6 +41,7 @@ struct RecipeDetailView: View {
                         Text("6").tag(6)
                         Text("8").tag(8)
                     }
+                    .font(Font.custom("Avenir", size: 15))
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width:160)
                     
@@ -51,11 +52,12 @@ struct RecipeDetailView: View {
                 
                 VStack(alignment: .leading) {
                     Text("Ingredients")
-                        .font(.headline)
+                        .font(Font.custom("Avenir Heavy", size: 16))
                         .padding([.bottom, .top], 5.0)
                     
                     ForEach(recipe.ingredients){ item in
                         Text("• " + RecipeViewModel.getPortion(ingredient: item, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + item.name.lowercased())
+                            .font(Font.custom("Avenir", size: 15))
                     }
                 }
                 .padding(.horizontal)
@@ -68,12 +70,13 @@ struct RecipeDetailView: View {
                 VStack(alignment: .leading){
                     
                     Text("Directions")
-                        .font(.headline)
+                        .font(Font.custom("Avenir Heavy", size: 16))
                         .padding(.bottom, 5.0)
                     
                     ForEach(0..<recipe.directions.count, id: \.self){ index in
                         Text(String(index + 1) + ". " + recipe.directions[index])
                             .padding(.bottom, 5.0)
+                            .font(Font.custom("Avenir", size: 15))
                     }
                         
                 }
